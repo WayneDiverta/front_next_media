@@ -21,7 +21,7 @@ jobs:
       - name: "Get branch name and sha"
         id: get_branch
         run: |
-          PR=$(curl -H "X-Kuroco-Auth: token fa86440e11098c0e734c43766152932c" https://waynedev.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
+          PR=$(curl -H "X-Kuroco-Auth: token 7c3a4f300366e27ec6522b345acbc6a6" https://waynenextmedia.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
           echo "branch=$(echo $PR | jq -r '.ref')" >> $GITHUB_OUTPUT
           echo "sha=$(echo $PR | jq -r '.sha')" >> $GITHUB_OUTPUT
       - name: Checkout Repo
@@ -60,9 +60,9 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v3
         env:
-          webhook_url: "https://waynedev.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "fa86440e11098c0e734c43766152932c"
-          data: '{"single_zip":"1","domain":"waynedev.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
+          webhook_url: "https://waynenextmedia.g.kuroco.app/direct/menu/github/"
+          webhook_secret: "7c3a4f300366e27ec6522b345acbc6a6"
+          data: '{"single_zip":"1","domain":"waynenextmedia.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
           
   #for Push
   pushed_build:
@@ -101,6 +101,6 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v3
         env:
-          webhook_url: "https://waynedev.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "fa86440e11098c0e734c43766152932c"
-          data: '{"single_zip":"1","domain":"waynedev.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+          webhook_url: "https://waynenextmedia.g.kuroco.app/direct/menu/github/"
+          webhook_secret: "7c3a4f300366e27ec6522b345acbc6a6"
+          data: '{"single_zip":"1","domain":"waynenextmedia.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
